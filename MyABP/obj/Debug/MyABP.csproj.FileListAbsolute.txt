@@ -1,0 +1,5 @@
+C:\Users\Administrator\Documents\Visual Studio 2012\Projects\MyABP\MyABP\obj\Debug\MyABP.csprojResolveAssemblyReference.cache
+C:\Users\Administrator\Documents\Visual Studio 2012\Projects\MyABP\MyABP\bin\Debug\MyABP.dll
+C:\Users\Administrator\Documents\Visual Studio 2012\Projects\MyABP\MyABP\bin\Debug\MyABP.pdb
+C:\Users\Administrator\Documents\Visual Studio 2012\Projects\MyABP\MyABP\obj\Debug\MyABP.dll
+C:\Users\Administrator\Documents\Visual Studio 2012\Projects\MyABP\MyABP\obj\Debug\MyABP.pdb
