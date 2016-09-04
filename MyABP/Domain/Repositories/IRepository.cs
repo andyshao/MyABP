@@ -124,9 +124,9 @@ namespace MyABP.Domain.Repositories
         /// <summary>
         /// 加载指定Id的该实体
         /// </summary>
-        /// <param name="Id"></param>
+        /// <param name="id"></param>
         /// <returns></returns>
-        TEntity Load(TPrimaryKey Id);
+        TEntity Load(TPrimaryKey id);
 
         /// <summary>
         /// 在整个集合中执行一个查询
@@ -202,7 +202,7 @@ namespace MyABP.Domain.Repositories
         Task<TPrimaryKey> InsertAndGetIdAsync(TEntity entity);
 
         /// <summary>
-        /// 新增或更新一个实体。（若不存在则新增，存在则更新）
+        /// 新增或更新一个实体。（若为Transient实体则新增，否则更新）
         /// </summary>
         /// <param name="entity"></param>
         /// <returns></returns>

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace MyABP.Domain.Entities
 {
@@ -25,7 +21,9 @@ namespace MyABP.Domain.Entities
         public virtual TPrimaryKey Id { get; set; }
 
         /// <summary>
-        /// 检查实体是否为transient
+        /// 来检测当前 Id 的值是否与指定的类型的缺省值相等
+        /// 若相等，说明这个构造的一个新的entity，不存在于数据库中。
+        /// 若不等，说明是已存在于数据库中的entity。
         /// </summary>
         /// <returns></returns>
         public bool IsTransient()
@@ -80,7 +78,7 @@ namespace MyABP.Domain.Entities
 
         public override string ToString()
         {
-            return string.Format("[{0} {1}]", GetType().Name, Id);
+            return $"[{GetType().Name} {Id}]";
         }
 
         /// <summary>

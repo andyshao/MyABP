@@ -52,6 +52,7 @@
     <Compile Include="Domain\Entities\EntityExtensions.cs" />
     <Compile Include="Domain\Entities\IEntity.cs" />
     <Compile Include="Domain\Entities\ISoftDelete.cs" />
+    <Compile Include="Domain\Repositories\AbpRepositoryBase.cs" />
     <Compile Include="Domain\Repositories\IRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
