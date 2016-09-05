@@ -24,7 +24,7 @@ namespace MyABP.Domain.Repositories
             return entity;
         }
 
-        public virtual Task<TEntity> GetAsync(TPrimaryKey id)
+        public virtual async Task<TEntity> GetAsync(TPrimaryKey id)
         {
             var entity = await FirstOrDefaultAsync(id);
             if (entity == null)
@@ -106,24 +106,25 @@ namespace MyABP.Domain.Repositories
 
         #region 更新
 
-        public virtual TEntity Update(TEntity entity)
-        {
-            throw new NotImplementedException();
-        }
+        public abstract TEntity Update(TEntity entity);
 
         public virtual Task<TEntity> UpdateAsync(TEntity entity)
         {
-            throw new NotImplementedException();
+            return Task.FromResult(Update(entity));
         }
 
         public virtual TEntity Update(TPrimaryKey id, Action<TEntity> updateAction)
         {
-            throw new NotImplementedException();
+            var entity = Get(id);
+            updateAction(entity);
+            return entity;
         }
 
-        public virtual Task<TEntity> UpdateAsync(TPrimaryKey id, Func<TEntity, Task> updateAction)
+        public virtual async Task<TEntity> UpdateAsync(TPrimaryKey id, Func<TEntity, Task> updateAction)
         {
-            throw new NotImplementedException();
+            var entity = await GetAsync(id);
+            updateAction(entity);
+            return entity;
         }
 
         #endregion
@@ -171,7 +172,6 @@ namespace MyABP.Domain.Repositories
 
         #endregion
 
-
         #region 删除
 
         public abstract void Delete(TPrimaryKey id);
@@ -191,9 +191,19 @@ namespace MyABP.Domain.Repositories
             return Task.FromResult(entity);
         }
 
+        public virtual void Delete(Expression<Func<TEntity, bool>> predicate)
+        {
+            var entities = GetAll().Where(predicate).ToList();
+            foreach (var entity in entities)
+            {
+                Delete(entity);
+            }
+        }
+
         public virtual Task DeleteAsync(Expression<Func<TEntity, bool>> predicate)
         {
-            throw new NotImplementedException();
+            Delete(predicate);
+            return Task.FromResult(0);
         }
 
         #endregion
@@ -202,42 +212,42 @@ namespace MyABP.Domain.Repositories
 
         public virtual int Count()
         {
-            throw new NotImplementedException();
+            return GetAll().Count();
         }
 
         public virtual Task<int> CountAsync()
         {
-            throw new NotImplementedException();
+            return Task.FromResult(Count());
         }
 
         public virtual int Count(Expression<Func<TEntity, bool>> predicate)
         {
-            throw new NotImplementedException();
+            return GetAll().Where(predicate).Count();
         }
 
         public virtual Task<int> CountAsync(Expression<Func<TEntity, bool>> predicate)
         {
-            throw new NotImplementedException();
+            return Task.FromResult(Count(predicate));
         }
 
         public virtual long LongCount()
         {
-            throw new NotImplementedException();
+            return GetAll().LongCount();
         }
 
         public virtual Task<long> LongCountAsync()
         {
-            throw new NotImplementedException();
+            return Task.FromResult(LongCount());
         }
 
         public virtual long LongCount(Expression<Func<TEntity, bool>> predicate)
         {
-            throw new NotImplementedException();
+            return GetAll().Where(predicate).LongCount();
         }
 
         public virtual Task<long> LongCountAsync(Expression<Func<TEntity, bool>> predicate)
         {
-            throw new NotImplementedException();
+            return Task.FromResult(LongCount(predicate));
         }
 
         #endregion

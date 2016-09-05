@@ -264,6 +264,13 @@ namespace MyABP.Domain.Repositories
         /// </summary>
         /// <param name="predicate"></param>
         /// <returns></returns>
+        void Delete(Expression<Func<TEntity, bool>> predicate);
+
+        /// <summary>
+        /// 通过Lambda表达式删除满足条件的实体 --异步
+        /// </summary>
+        /// <param name="predicate"></param>
+        /// <returns></returns>
         Task DeleteAsync(Expression<Func<TEntity, bool>> predicate);
 
         #endregion

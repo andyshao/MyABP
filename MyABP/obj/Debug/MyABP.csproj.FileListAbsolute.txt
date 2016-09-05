@@ -3,3 +3,8 @@ C:\Users\Administrator\Documents\Visual Studio 2012\Projects\MyABP\MyABP\bin\Deb
 C:\Users\Administrator\Documents\Visual Studio 2012\Projects\MyABP\MyABP\bin\Debug\MyABP.pdb
 C:\Users\Administrator\Documents\Visual Studio 2012\Projects\MyABP\MyABP\obj\Debug\MyABP.dll
 C:\Users\Administrator\Documents\Visual Studio 2012\Projects\MyABP\MyABP\obj\Debug\MyABP.pdb
+F:\Coding\MyABP\MyABP\obj\Debug\MyABP.csprojResolveAssemblyReference.cache
+F:\Coding\MyABP\MyABP\obj\Debug\MyABP.dll
+F:\Coding\MyABP\MyABP\obj\Debug\MyABP.pdb
+F:\Coding\MyABP\MyABP\bin\Debug\MyABP.dll
+F:\Coding\MyABP\MyABP\bin\Debug\MyABP.pdb
