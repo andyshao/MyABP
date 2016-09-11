@@ -13,6 +13,11 @@ namespace MyABP.Dependency
         Assembly Assembly { get; }
 
         /// <summary>
+        /// 引用用于注册的IOC容器
+        /// </summary>
+        IIocManager IocManager { get; }
+
+        /// <summary>
         /// 注入配置项
         /// </summary>
         ConventionalRegistrationConfig Config { get; }
