@@ -47,8 +47,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AbpException.cs" />
+    <Compile Include="AbpInitializationException.cs" />
     <Compile Include="Configuration\DictionaryBasedConfig.cs" />
     <Compile Include="Configuration\IDictionaryBasedConfig.cs" />
+    <Compile Include="Configuration\Startup\IAbpStartupConfiguration.cs" />
     <Compile Include="Dependency\BasicConventionalDependencyRegistrar.cs" />
     <Compile Include="Dependency\ConventionalRegistrationConfig.cs" />
     <Compile Include="Dependency\ConventionalRegistrationContext.cs" />
@@ -76,6 +79,8 @@
     <Compile Include="Domain\Entities\ISoftDelete.cs" />
     <Compile Include="Domain\Repositories\AbpRepositoryBase.cs" />
     <Compile Include="Domain\Repositories\IRepository.cs" />
+    <Compile Include="Models\AbpModel.cs" />
+    <Compile Include="Models\DependsOnAttribute.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
