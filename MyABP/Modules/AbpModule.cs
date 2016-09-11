@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using Castle.Core.Logging;
+using MyABP.Collections.Extensions;
 using MyABP.Configuration.Startup;
 using MyABP.Dependency;
 
-namespace MyABP.Models
+namespace MyABP.Modules
 {
     /// <summary>
     /// 所有的模块定义类必须继承此类
@@ -16,7 +17,7 @@ namespace MyABP.Models
     /// 在应用程序启动和关闭时实现一些操作在模块事件中；
     /// 同时也可以定义依赖的模块
     /// </remarks>
-    public abstract class AbpModel
+    public abstract class AbpModule
     {
         /// <summary>
         /// 获取<see cref="IocManager"/>的一个引用
@@ -80,7 +81,7 @@ namespace MyABP.Models
             return type.IsClass &&
                    !type.IsAbstract &&
                    !type.IsGenericType &&
-                   typeof(AbpModel).IsAssignableFrom(type);
+                   typeof(AbpModule).IsAssignableFrom(type);
         }
 
         /// <summary>
@@ -111,6 +112,43 @@ namespace MyABP.Models
                 }
             }
             return list;
+        }
+
+        /// <summary>
+        /// 获取模块依赖的模块（并递归获取依赖模块的依赖）
+        /// </summary>
+        public static List<Type> FindDependedModuleTypesRecursively(Type moduleType)
+        {
+            var list = new List<Type>();
+            AddModuleAndDependenciesResursively(list, moduleType);
+            list.AddIfNotContains(typeof(AbpKernelModule));
+            return list;
+        }
+
+        /// <summary>
+        /// 递归添加模块和模块的依赖到集合中
+        /// </summary>
+        /// <param name="modules"></param>
+        /// <param name="module"></param>
+        private static void AddModuleAndDependenciesResursively(List<Type> modules, Type module)
+        {
+            if (!IsAbpModule(module))
+            {
+                throw new AbpInitializationException("This type is not an ABP module: " + module.AssemblyQualifiedName);
+            }
+
+            if (modules.Contains(module))
+            {
+                return;
+            }
+
+            modules.Add(module);
+
+            var dependedModules = FindDependedModuleTypes(module);
+            foreach (var dependedModule in dependedModules)
+            {
+                AddModuleAndDependenciesResursively(modules, dependedModule);
+            }
         }
 
     }

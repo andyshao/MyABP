@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -9,8 +9,9 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>MyABP</RootNamespace>
     <AssemblyName>MyABP</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -49,6 +50,8 @@
   <ItemGroup>
     <Compile Include="AbpException.cs" />
     <Compile Include="AbpInitializationException.cs" />
+    <Compile Include="AbpKernelModule.cs" />
+    <Compile Include="Collections\Extensions\CollectionExtensionns.cs" />
     <Compile Include="Configuration\DictionaryBasedConfig.cs" />
     <Compile Include="Configuration\IDictionaryBasedConfig.cs" />
     <Compile Include="Configuration\Startup\IAbpStartupConfiguration.cs" />
@@ -62,6 +65,7 @@
     <Compile Include="Dependency\IIocRegistrar.cs" />
     <Compile Include="Dependency\IIocResolver.cs" />
     <Compile Include="Dependency\IocManager.cs" />
+    <Compile Include="Dependency\IocRegistrarExtensions.cs" />
     <Compile Include="Dependency\ISingletonDependency.cs" />
     <Compile Include="Dependency\ITransientDependency.cs" />
     <Compile Include="Domain\Entities\Auditing\AuditedEntity.cs" />
@@ -79,8 +83,15 @@
     <Compile Include="Domain\Entities\ISoftDelete.cs" />
     <Compile Include="Domain\Repositories\AbpRepositoryBase.cs" />
     <Compile Include="Domain\Repositories\IRepository.cs" />
-    <Compile Include="Models\AbpModel.cs" />
-    <Compile Include="Models\DependsOnAttribute.cs" />
+    <Compile Include="Modules\AbpModule.cs" />
+    <Compile Include="Modules\AbpModuleCollection.cs" />
+    <Compile Include="Modules\AbpModuleInfo.cs" />
+    <Compile Include="Modules\AbpModuleManager.cs" />
+    <Compile Include="Modules\DependsOnAttribute.cs" />
+    <Compile Include="Modules\IAbpModuleManager.cs" />
+    <Compile Include="PlugIns\IAbpPlugInManager.cs" />
+    <Compile Include="PlugIns\IPlugInSource.cs" />
+    <Compile Include="PlugIns\PlugInSourceList.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

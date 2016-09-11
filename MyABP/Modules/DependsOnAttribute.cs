@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace MyABP.Models
+namespace MyABP.Modules
 {
     /// <summary>
     /// 用来指定依赖的模块
