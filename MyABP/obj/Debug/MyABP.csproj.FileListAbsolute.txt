@@ -8,3 +8,7 @@ F:\Coding\MyABP\MyABP\obj\Debug\MyABP.dll
 F:\Coding\MyABP\MyABP\obj\Debug\MyABP.pdb
 F:\Coding\MyABP\MyABP\bin\Debug\MyABP.dll
 F:\Coding\MyABP\MyABP\bin\Debug\MyABP.pdb
+F:\Coding\MyABP\MyABP\bin\Debug\Castle.Core.dll
+F:\Coding\MyABP\MyABP\bin\Debug\Castle.Windsor.dll
+F:\Coding\MyABP\MyABP\bin\Debug\Castle.Core.xml
+F:\Coding\MyABP\MyABP\bin\Debug\Castle.Windsor.xml
